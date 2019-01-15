@@ -3,10 +3,68 @@ namespace App\Http\Controllers\user\auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Shop\Entity\User;
 use Validator;
+use Hash;
+use Mail;
 
 class UserAuthController extends Controller
 {
+    //登入畫面
+    public function signInPage(){
+        $binding = [
+            'title' => '登入'
+        ];
+
+        return view('auth.signIn',$binding);
+    }
+
+    //登入表單檢查
+    public function signInProcess(){
+        $input = request()->all();
+
+        $rules = [
+            'email'=>[
+                'required',
+                'max:150',
+                'email'
+            ],
+            'password'=>[
+                'required',
+                'min:6'
+            ]
+        ];
+
+        $validator = Validator::make($input,$rules);
+
+        if ($validator->fails()){
+            return redirect('/user/auth/sign-in')
+                   ->withErrors($validator) 
+                   ->withInput();
+        }
+
+        //撈取使用者資料
+        $User = User :: where('email',$input['email'])->firstOrFail();
+
+        //檢查密碼是否正確
+        $is_password_correct = Hash::check($input['password'], $User->password);
+
+        if (!$is_password_correct){
+            //密碼錯誤回傳錯誤訊息
+            $error_message=[
+                'msg'=>[
+                    '密碼驗證錯誤'
+                ]
+            ];
+            return redirect('/user/auth/sign-in')
+                   ->withErrors($error_message)
+                   ->withInput();
+        }else{
+            echo "successful";
+        }
+    }
+
+    //註冊畫面
     public function signUpPage()
     {
         $binding = [
@@ -16,6 +74,7 @@ class UserAuthController extends Controller
         return view('auth.signUp',$binding);
     }
 
+    //註冊表單檢查
     public function signupProcess()
     {
         $input = request()->all();
@@ -54,12 +113,40 @@ class UserAuthController extends Controller
         ];
 
         $validator = Validator::make($input,$rules);
-
+        
+        
+        
         if ($validator -> fails()){
             return redirect('/user/auth/sign-up')
-                   ->withErrors($validator);
-        }else{
-            echo "sucessful";
+                   ->withErrors($validator)
+                   ->withInput();
         }
+
+        //密碼加密
+        $input['password'] = Hash::make($input['password']);
+
+        //新增會員資料
+        $Users = User::create($input);
+
+        // $mail_binding = [
+        //     'nickname' => $input['nickname']
+        // ];
+
+        // Mail::send('email.signUpEmailNotification', $mail_binding, function ($message) use($input){
+        //     //寄件人
+        //     $message->to($input['email']);
+        //     //收件人
+        //     $message->from('j309028133@gmail.com');
+        //     //郵件主旨
+        //     $message->subject('恭喜註冊 Shop Laravel 成功');
+        // });
+
+        //重新導向到登入頁
+        return redirect('user/auth/sign-up');
+    }
+
+    //登出
+    public function signOut(){
+
     }
 }

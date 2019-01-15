@@ -12,7 +12,6 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
     'accepted' => '必須接受 :attribute',
     'active_url' => ':attribute 並非是一個有效的網址',
     'after' => ':attribute 必須要在 :date 之後',
@@ -39,7 +38,7 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => ':attribute 的格式無效',
     'exists' => 'The selected :attribute is invalid.',
     'file' => 'The :attribute must be a file.',
     'filled' => 'The :attribute field must have a value.',
@@ -76,18 +75,18 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => 'The :attribute may not be greater than :max.',
-        'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
-        'array' => 'The :attribute may not have more than :max items.',
+        'numeric' => ':attribute不得大於:max.',
+        'file' => ':attribute不得大於:max kilobytes.',
+        'string' => ':attribute不得大於:max個字元',
+        'array' => ':attribute不得大於:max個項目',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
-        'array' => 'The :attribute must have at least :min items.',
+        'numeric' => ':attribute至少須為:min.',
+        'file' => ':attribute至少需有:min kilobytes.',
+        'string' => ':attribute至少須有:min個字元',
+        'array' => ':attribute至少需有:min個項目',
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
@@ -101,7 +100,7 @@ return [
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
-    'same' => 'The :attribute and :other must match.',
+    'same' => ':attribute和:other必須相等',
     'size' => [
         'numeric' => 'The :attribute must be :size.',
         'file' => 'The :attribute must be :size kilobytes.',
@@ -144,6 +143,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'nickname'=>'暱稱',
+        'email'=>'電子信箱',
+        'password' => '密碼',
+        'password_confirmation'=>'確認密碼'
+    ],
 
 ];

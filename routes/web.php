@@ -20,6 +20,12 @@ Route::get('/', ['as' => 'home.index', 'uses' => 'HomeController@index']);
 Route::group(['prefix'=>'user'],function(){
 	//使用者驗證
 	Route::group(['prefix'=>'auth'],function(){
+		//使用者登入
+		Route::get('/sign-in','user\auth\UserAuthController@signInPage');
+		//使用者登入處理
+		Route::post('/sign-in','user\auth\UserAuthController@signInProcess');
+		//使用者登出
+		Route::get('/sign-out','user\auth\UserAuthController@signOut');
 		//使用者註冊
 		Route::get('/sign-up','user\auth\UserAuthController@signUpPage');
 

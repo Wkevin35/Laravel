@@ -15,6 +15,7 @@
 			<input type="text" 
        			   name="nickname"
        			   placeholder="暱稱"
+       			   value="{{old('nickname')}}" 
 			>
 		</label>
 		<label>
@@ -22,6 +23,7 @@
 			<input type="text" 
        				name="email"
        				placeholder="Email"
+       				value="{{old('email')}}" 
 			>
 		</label>
 		<label>
@@ -29,6 +31,7 @@
 			<input type="password" 
        				name="password"
        				placeholder="密碼"
+       				 
 			>
 		</label>
 		<label>
