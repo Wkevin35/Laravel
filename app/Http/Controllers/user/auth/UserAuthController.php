@@ -59,9 +59,10 @@ class UserAuthController extends Controller
             return redirect('/user/auth/sign-in')
                    ->withErrors($error_message)
                    ->withInput();
-        }else{
-            echo "successful";
         }
+
+        return redirect('/user/auth/sign-in')
+                ->with('success','登入成功');
     }
 
     //註冊畫面
@@ -142,7 +143,8 @@ class UserAuthController extends Controller
         // });
 
         //重新導向到登入頁
-        return redirect('user/auth/sign-up');
+        return redirect('user/auth/sign-up')
+               ->with('success','註冊成功');
     }
 
     //登出
