@@ -2,6 +2,10 @@
 
 @section('title',$title)
 
+@section('header')
+ 	@include('components.usersLoginOrNot')
+@endsection
+
 @section('content')
 	<div class="container">
 		<h1>{{$title}}</h1>

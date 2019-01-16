@@ -6,8 +6,10 @@
 </head>
 <body>
 	<header>
-		<a href="/user/auth/sign-up">註冊</a>
-		<a href="/user/auth/sign-in">登入</a>
+		<a href="/">返回首頁</a>
+		@yield('header')
+		{{-- <a href="/user/auth/sign-up">註冊</a>
+		<a href="/user/auth/sign-in">登入</a> --}}
 	</header>
 
 	<div class="container">

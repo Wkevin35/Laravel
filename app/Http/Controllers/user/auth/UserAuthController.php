@@ -61,8 +61,11 @@ class UserAuthController extends Controller
                    ->withInput();
         }
 
-        return redirect('/user/auth/sign-in')
-                ->with('success','登入成功');
+        session()->put($this->USER_ID,$User->id);
+        session()->put($this->NICK_NAME,$User->nickname);
+        // return redirect('/user/auth/sign-in')
+        //         ->with('success','登入成功');
+        return redirect()->intended('/');
     }
 
     //註冊畫面
@@ -149,6 +152,9 @@ class UserAuthController extends Controller
 
     //登出
     public function signOut(){
+        //清除session
+        session()->forget($this->USER_ID);
 
+        return redirect('/');
     }
 }
