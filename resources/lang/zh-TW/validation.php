@@ -147,7 +147,8 @@ return [
         'nickname'=>'暱稱',
         'email'=>'電子信箱',
         'password' => '密碼',
-        'password_confirmation'=>'確認密碼'
+        'password_confirmation'=>'確認密碼',
+        'buy_count'=>'購買數量',
     ],
 
 ];

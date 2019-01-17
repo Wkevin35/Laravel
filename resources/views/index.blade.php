@@ -26,8 +26,8 @@
 					<td>{{ $Merchandise->price }}</td>
 					<td>{{ $Merchandise->remain_count }}</td>
 					<td>
-						<a href="#">
-							購買
+						<a href="/merchandise/{{ $Merchandise->id }}">
+							檢視
 						</a>
 					</td>
 				</tr>
@@ -38,8 +38,9 @@
 		@if(session()->has('user'))
 			@if(session('user.0.type')=='A')
 				<a href="/merchandise/create">創建新商品</a><br>
-				<a href="/merchandise/manage">商品管理清單</a>
+				<a href="/merchandise/manage">商品管理清單</a><br>
 			@endif
+			<a href="/transation">交易紀錄</a>
 		@endif
 	</div>
 @endsection

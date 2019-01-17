@@ -60,3 +60,5 @@ Route::group(['prefix'=>'merchandise'],function(){
 		
 	});
 });
+
+Route::get('/transation','transaction\TransactionController@transactionListPage')->middleware(['user.auth']);
