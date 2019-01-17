@@ -61,11 +61,19 @@ class UserAuthController extends Controller
                    ->withInput();
         }
 
-        session()->put($this->USER_ID,$User->id);
-        session()->put($this->NICK_NAME,$User->nickname);
+        //創建session陣列
+        $User_array=[
+            $this->NICK_NAME=>$User->nickname,//暱稱
+            $this->TYPE => $User->type,      //會員型別
+            $this->USER_ID => $User->id,          //會員ID
+        ];
+        session()->push($this->USER,$User_array);
+        // session()->put($this->USER_ID,$User->id);
+        // session()->put($this->NICK_NAME,$User->nickname);
+        // session()->put($this->TYPE,$User->type);
         // return redirect('/user/auth/sign-in')
         //         ->with('success','登入成功');
-        return redirect()->intended('/');
+        return redirect()->intended('/')->with('success','登入成功');
     }
 
     //註冊畫面
@@ -146,14 +154,15 @@ class UserAuthController extends Controller
         // });
 
         //重新導向到登入頁
-        return redirect('user/auth/sign-up')
+        return redirect('user/auth/sign-in')
                ->with('success','註冊成功');
     }
 
     //登出
     public function signOut(){
         //清除session
-        session()->forget($this->USER_ID);
+        // session()->forget($this->USER_ID);
+        session()->forget($this->USER);
 
         return redirect('/');
     }

@@ -108,7 +108,7 @@ class MerchandiseController extends Controller{
 
 		if ($validator->fails()){
 			//資料驗證錯誤
-			return redirect('/merchandise'.$Merchandise->id.'/edit')
+			return redirect('/merchandise/'.$Merchandise->id.'/edit')
 				   ->withErrors($validator)
 				   ->withInput();
 		}
@@ -133,7 +133,8 @@ class MerchandiseController extends Controller{
 		$Merchandise->update($input);
 
 		//重新導到商品編輯頁
-		return redirect('/merchandise/'.$Merchandise->id.'/edit');
+		// return redirect('/merchandise/'.$Merchandise->id.'/edit');
+		return redirect('/merchandise/manage');
 	}
 
 	//商品管理清單檢視
@@ -148,9 +149,8 @@ class MerchandiseController extends Controller{
 		foreach ($MerchandisePaginate as $Merchandise) {
 		   if (!is_null($Merchandise->photo)){
 		   		//設定商品照片網址
-		   		$Merchandise->photo = 'http://laravel.local/'.$Merchandise->photo;
-				echo $Merchandise->photo;
-
+		   		// $Merchandise->photo = 'http://laravel.local/'.$Merchandise->photo;
+		   		$Merchandise->photo = $this->DOMAIN.$Merchandise->photo;
 		   }
 		}                  
 
@@ -164,7 +164,23 @@ class MerchandiseController extends Controller{
 
 	//商品清單檢視
 	public function merchandiseListPage(){
+		$row_per_page = 10;
 
+		$MerchandisePaginate = Merchandise::where('status','S')
+								->OrderBy('created_at','desc')
+								->paginate($row_per_page);
+
+		foreach ($MerchandisePaginate as $Merchandise) {
+			if (!is_null($Merchandise->photo)){
+				$Merchandise->photo =$this->DOMAIN.$Merchandise->photo;
+			}
+		}
+
+		$binding = [
+			'title'=>'商品列表',
+			'MerchandisePaginate'=>$MerchandisePaginate
+		];
+		return view('index',$binding);
 	}
 	//商品單品檢視
 	public function merchandiseItemPage($Merchandise_id){

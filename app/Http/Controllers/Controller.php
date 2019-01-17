@@ -11,7 +11,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public $USER_ID = 'user_id';
-	public $NICK_NAME = 'nickname';
-    
+    public $USER = 'user';   		//使用者
+    public $USER_ID = 'id'; 	//使用者id
+	public $NICK_NAME = 'nickname';	//使用者暱稱
+    public $TYPE = 'type';			//使用者型態
+    public $DOMAIN = 'http://laravel.local/';
 }

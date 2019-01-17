@@ -12,7 +12,7 @@
 
 		@include('components.validationErrorMessage')
 
-		<table class="table">
+		<table class="table" border="1">
 			<tr>
 				<th>編號</th>
 				<th>名稱</th>
@@ -45,5 +45,8 @@
 			@endforeach
 		</table>
 		{{ $MerchandisePaginate->links() }}
+
+		<a href="/merchandise/create">創建新商品</a><br>
+		<a href="/merchandise/manage">商品管理清單</a>
 	</div>
 @endsection

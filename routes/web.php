@@ -15,7 +15,8 @@
 //     return view('welcome');
 // });
 
-Route::get('/', ['as' => 'home.index', 'uses' => 'HomeController@index']);
+// Route::get('/', ['as' => 'home.index', 'uses' => 'HomeController@index']);
+Route::get('/', 'merchandise\MerchandiseController@merchandiseListPage');
 
 Route::group(['prefix'=>'user'],function(){
 	//使用者驗證

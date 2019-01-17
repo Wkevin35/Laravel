@@ -20,7 +20,7 @@ class AuthUserAdminMiddleware
         //預設不允許存取
         $is_allow_access = false;
         //取得會員編號
-        $user_id = session()->get('user_id');
+        $user_id = session('user.0.id');
 
         if (!is_null($user_id)){
             //sesssion有會員編號 取得會員資料
