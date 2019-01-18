@@ -19,7 +19,13 @@
 			</tr>
 			<tr>
 				<th>照片</th>
-				<td><img src="{{ $Merchandise->photo }}"></td>
+				<td>
+					@if ($Merchandise->photo!=null)
+						<img src="{{$Merchandise->photo}}">
+					@else
+						@include('components.noImage')
+					@endif
+				</td>
 			</tr>
 			<tr>
 				<th>價格</th>

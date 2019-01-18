@@ -28,8 +28,11 @@
 						
 					</td>
 					<td>
-						<img src="{{ $Transaction->Merchandise->photo }}">
-
+						@if($Transaction->Merchandise->photo!=null)
+							<img src="{{ $Transaction->Merchandise->photo }}">
+						@else
+							@include('components.noImage')
+						@endif	
 					</td>
 					<td>{{ $Transaction->price }}</td>
 					<td>{{ $Transaction->buy_count }}</td>

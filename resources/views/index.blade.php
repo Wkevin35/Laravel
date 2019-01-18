@@ -22,7 +22,13 @@
 			@foreach($MerchandisePaginate as $Merchandise)
 				<tr>
 					<td>{{ $Merchandise->name }}</td>
-					<td><img src="{{$Merchandise->photo}}"></td>
+					<td>
+						@if ($Merchandise->photo!=null)
+							<img src="{{$Merchandise->photo}}">
+						@else
+							@include('components.noImage')
+						@endif
+					</td>
 					<td>{{ $Merchandise->price }}</td>
 					<td>{{ $Merchandise->remain_count }}</td>
 					<td>

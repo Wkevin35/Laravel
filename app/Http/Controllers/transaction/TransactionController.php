@@ -22,8 +22,9 @@ class TransactionController extends Controller{
 
 		//設定商品圖片網址
 		foreach ($TransactionPaginate as $Transaction) {
-			$Transaction->Merchandise->photo = url($Transaction->Merchandise->photo);
-
+			if (!is_null($Transaction->Merchandise->photo)){
+				$Transaction->Merchandise->photo = url($Transaction->Merchandise->photo);
+			}
 		}
 
 		$binding=[

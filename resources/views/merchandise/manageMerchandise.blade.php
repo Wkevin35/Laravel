@@ -26,9 +26,15 @@
 				<tr>
 					<td>{{ $Merchandise->id }}</td>
 					<td>{{ $Merchandise->name }}</td>
-					<td><img src="{{$Merchandise->photo}}"></td>
 					<td>
-						@if($Merchandise->status = 'C')
+						@if ($Merchandise->photo!=null)
+							<img src="{{$Merchandise->photo}}">
+						@else
+							@include('components.noImage')
+						@endif
+					</td>
+					<td>
+						@if($Merchandise->status=='C')
 							建立中
 						@else
 							可販售
