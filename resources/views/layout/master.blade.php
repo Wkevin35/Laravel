@@ -7,7 +7,7 @@
 </head>
 <body>
 	<header>
-		<a href="/">首頁</a>
+		<a href="/">{{ trans('shop.home') }} </a>
 		@yield('header')
 		{{-- <a href="/user/auth/sign-up">註冊</a>
 		<a href="/user/auth/sign-in">登入</a> --}}

@@ -46,7 +46,7 @@ class MerchandiseController extends Controller{
 		}
 
 		$binding = [
-			'title' => '編輯商品',
+			'title' => trans('shop.merchandise.edit'),
 			'Merchandise' => $Merchandise
 		];
 
@@ -159,7 +159,7 @@ class MerchandiseController extends Controller{
 		}                  
 
 		$binding = [
-			'title'=>'管理商品',
+			'title'=>trans('shop.merchandise.manage'),
 			'MerchandisePaginate'=>$MerchandisePaginate
 		];
 
@@ -183,7 +183,7 @@ class MerchandiseController extends Controller{
 		}
 
 		$binding = [
-			'title'=>'商品列表',
+			'title'=>trans('shop.merchandise.list'),
 			'MerchandisePaginate'=>$MerchandisePaginate
 		];
 		return view('index',$binding);
@@ -199,7 +199,7 @@ class MerchandiseController extends Controller{
 		}
 
 		$binding = [
-			'title'=>'商品頁',
+			'title'=>trans('shop.merchandise.page'),
 			'Merchandise'=>$Merchandise,
 		];
 

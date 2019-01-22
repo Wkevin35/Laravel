@@ -10,14 +10,14 @@
 	<div clase="container">
 		<h1>{{$title}}</h1>
 		 @include('components.validationErrorMessage')
-		<h2>歡迎光臨我的商品測試頁</h2>
+		<h2>{{ trans('shop.welcome') }}</h2>
 
 		<table class="table" border="1">
 			<tr>
-				<th>名稱</th>
-				<th>圖片</th>
-				<th>價格</th>
-				<th>剩餘數量</th>
+				<th>{{ trans('shop.merchandise.fields.name') }}</th>
+				<th>{{ trans('shop.merchandise.fields.photo') }}</th>
+				<th>{{ trans('shop.merchandise.fields.price') }}</th>
+				<th>{{ trans('shop.merchandise.fields.remain-count') }}</th>
 			</tr>
 			@foreach($MerchandisePaginate as $Merchandise)
 				<tr>
@@ -27,7 +27,7 @@
 					<td>{{ $Merchandise->remain_count }}</td>
 					<td>
 						<a href="/merchandise/{{ $Merchandise->id }}">
-							檢視
+							{{ trans('shop.check') }}
 						</a>
 					</td>
 				</tr>

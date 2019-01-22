@@ -11,45 +11,45 @@
 	<form action="/user/auth/sign-up" method="post">
 		{!! csrf_field() !!}
 		<label>
-			暱稱:
+			{{ trans('shop.user.fields.nickname') }}: 
 			<input type="text" 
        			   name="nickname"
-       			   placeholder="暱稱"
+       			   placeholder={{ trans('shop.user.fields.nickname') }} 
        			   value="{{old('nickname')}}" 
 			>
 		</label>
 		<label>
-			Email:
+			{{ trans('shop.user.fields.email') }}:
 			<input type="text" 
        				name="email"
-       				placeholder="Email"
+       				placeholder={{ trans('shop.user.fields.email') }}
        				value="{{old('email')}}" 
 			>
 		</label>
 		<label>
-			密碼:
+			{{ trans('shop.user.fields.password') }}:
 			<input type="password" 
        				name="password"
-       				placeholder="密碼"
+       				placeholder={{ trans('shop.user.fields.password') }}
        				 
 			>
 		</label>
 		<label>
-			確認密碼:
+			{{ trans('shop.user.fields.confirm-password') }}:
 			<input type="password" 
        				name="password_confirmation"
-       				placeholder="確認密碼"
+       				placeholder={{ trans('shop.user.fields.confirm-password') }}
        		>
 		</label>
 		<label>
-			帳號類型:
+			{{ trans('shop.user.fields.type-name') }}:
 			<select name="type">
-				<option value="G">一般會員</option>
-				<option value="A">管理員</option>
+				<option value="G">{{ trans('shop.user.fields.type.general') }}</option>
+				<option value="A">{{ trans('shop.user.fields.type.admin') }}</option>
 			</select>
 		</label>
 
-		<button type="submit">註冊</button>
+		<button type="submit">{{ trans('shop.auth.sign-up') }}</button>
 	</form>
 
 </div>
