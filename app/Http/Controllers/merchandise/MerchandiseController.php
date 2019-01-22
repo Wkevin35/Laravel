@@ -269,15 +269,16 @@ class MerchandiseController extends Controller{
 			//交易結束
 			DB::commit();
 			//回傳購物成功訊息
-			$message = [
-				'msg'=>[
-					'購買成功',
-				]
-			];
+			// $message = [
+			// 	'msg'=>[
+			// 		'購買成功',
+			// 	]
+			// ];
+			$message = '購買成功';
 
 			return redirect()
 				->to('/merchandise/'.$Merchandise->id)
-				->withErrors($message);
+				->with('success',$message);
 		}catch(Exception $exception){
 			// 恢復原先交易狀態
 			DB::rollBack();

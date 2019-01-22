@@ -18,8 +18,15 @@
 				<td>{{ $Merchandise->name }}</td>
 			</tr>
 			<tr>
+
 				<th>{{ trans('shop.merchandise.fields.photo') }}</th>
-				<td><img src="{{ $Merchandise->photo }}"></td>
+				<td>
+					@if ($Merchandise->photo!=null)
+						<img src="{{$Merchandise->photo}}">
+					@else
+						@include('components.noImage')
+					@endif
+				</td>
 			</tr>
 			<tr>
 				<th>{{ trans('shop.merchandise.fields.price') }}</th>
