@@ -8,6 +8,7 @@
 
 @section('content')
 	<div clase="container">
+		
 		<h1>{{$title}}</h1>
 		 @include('components.validationErrorMessage')
 		<h2>{{ trans('shop.welcome') }}</h2>
